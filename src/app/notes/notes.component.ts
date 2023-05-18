@@ -1,41 +1,30 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { Note } from '../note';
-import { NotesService } from '../notes.service';
+import { Component, Inject, OnInit } from "@angular/core";
+import { Note } from "../note";
+import { NotesService } from "../notes.service";
+import { MessageService } from "../message.service";
 
-import { mockNotes } from '../mock.notes';
-
+import { NOTES } from "../mock.notes";
 @Component({
-  selector: 'app-notes',
-  templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.css']
+  selector: "app-notes",
+  templateUrl: "./notes.component.html",
+  styleUrls: ["./notes.component.css"],
 })
 export class NotesComponent implements OnInit {
-  // notes: Note[] = [
-  //   {
-  //     id: 1,
-  //     title: 'Mock Title',
-  //     body: 'mock body',
-  //     color: '#ff0000',
-  //     favourite: true
-  //   }
-  // ];
-
-  notes = mockNotes;
   selected: Partial<Note>;
 
   private service: NotesService;
-  selectedHero: Note;
 
-  constructor() {
-
+  constructor(
+    private notesService: NotesService,
+    private messageService: MessageService
+  ) {
+    this.service = notesService;
   }
 
-  selectedNote?: Note;
-  onSelect(note: Note): void {
-    this.selectedHero = note;
-  }
+  notes: Note[] = [];
+  selectedNote: Note | undefined;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadNotes();
   }
 
@@ -43,20 +32,36 @@ export class NotesComponent implements OnInit {
     return this.notes;
   }
 
+  // private loadNotes(): void {
+  //   // TODO: Retrieve a list of notes from the service and store them locally
+  //   this.notes = this.service.getNotes();
+  // }
   private loadNotes(): void {
     // TODO: Retrieve a list of notes from the service and store them locally
+    // this.notes = this.service.getNotes();
+    this.notesService.getNotes()
+    .subscribe((notes) => (this.notes = notes));
   }
 
-  selectNote(note) {
-    // TODO: prevent changing original object
-    this.selected = note;
+
+  delete(note: Note): void {
+    this.notes = this.notes.filter(h => h !== note);
+    this.notesService.deleteNote(note.id).subscribe();
   }
 
-  newNote() {
-    this.selected = {};
-  }
+  // selectNote(note: Note):void  {
+  //   // TODO: prevent changing original object
+  //   this.selectedNote  = note;
+  //   this.messageService.add(`NotesComponent: Selected note id=${note.id}`);
 
-  saveNote(note) {
-    // TODO: save note
-  }
+  // }
+
+  // newNote() {
+  //   // this.selected = {};
+  //   this.selectedNote = {} as Note;
+  // }
+
+  // saveNote(note) {
+  //   // TODO: save note
+  // }
 }

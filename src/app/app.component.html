@@ -1,2 +1,20 @@
-<h1>{{title}}</h1>
-<app-notes></app-notes>
+
+<div class="container">
+  <div class="row">
+  <h1>Note App</h1>
+    <div class="">
+      <h1>{{ title }}</h1>
+      <nav>
+        <a class="mr-2" routerLink="/dashboard">Dashboard</a>
+        <a class="mr-2" routerLink="/notes">Notes</a>
+        <a class="mr-2" routerLink="/create">Create</a>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="row">
+    <app-messages></app-messages>
+  </div>
+</div>
+
+<!-- <app-notes></app-notes> -->

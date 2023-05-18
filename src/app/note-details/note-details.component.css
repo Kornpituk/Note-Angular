@@ -1,0 +1,42 @@
+/* HeroDetailComponent's private CSS styles */
+label {
+  color: #435960;
+  font-weight: bold;
+}
+input {
+  font-size: 1em;
+  padding: .5rem;
+}
+button {
+  margin-top: 20px;
+  margin-left: 10px;
+  /* background-color: #f9c6c6; */
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: black;
+}
+.btn-secondary {
+  background-color: rgb(136, 136, 136);
+  border-color:none;
+}
+.btn-success {
+  background-color: lightgreen;
+  border-color:lightgreen;
+}
+.btn-secondary:hover {
+  background-color: rgb(97, 97, 97);
+  border-color:rgb(97, 97, 97);
+}
+.btn-success:hover {
+  background-color:chartreuse;
+  border-color:chartreuse;
+}
+/* button:hover {
+  background-color: #dd1d1d;
+} */
+button:disabled {
+  background-color: #f9c6c6;
+  color: #ccc;
+  cursor: auto;
+}
