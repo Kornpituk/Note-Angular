@@ -11,41 +11,31 @@
     </div>
   </div>
 
-  <!-- <div class="row">
-    <div class="col-xs-4">
-      <div class="list-group">
-        <div class="list-group-item note" *ngFor="let note of notes">
-          <div routerLink="/detail/{{ note.id }}">
-            {{ note.title }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4" >
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
     <div class="col" *ngFor="let note of notes">
-      <div class="card mb-3" style="max-width: 18rem;" [style.border-color]="note.color" >
-        <div class="card-header bg-transparent"[style.border-color]="note.color" routerLink="/detail/{{ note.id }}">
-
+      <div class="card mb-3" style="max-width: 18rem;" [style.border-color]="note.color">
+        <div class="card-header bg-transparent" [style.border-color]="note.color" routerLink="/detail/{{ note.id }}">
           <button type="button" class="btn btn" routerLink="/detail/{{ note.id }}" [style.background-color]="note.color" style="color: white">
-            {{note.title}}
+            {{ note.title }}
           </button>
-          <button type="button" class="btn btn-warning" title="delete note"
-  (click)="delete(note)" style="float: right;">x</button>
+          <button type="button" class="btn btn-warning" title="delete note" (click)="delete(note)" style="float: right;">x</button>
         </div>
-        <div class="card-body" routerLink="/detail/{{ note.id }}">
-          <h5 class="card-title">Success card title</h5>
-          <p class="card-text">{{ note.body }}</p>
+        <div class="card-body">
+          <h5 class="card-title" [ngStyle]="{ 'font-size': note.favourite ? '16px' : '12px' }" [style.color]="note.color">
+            favourite : [{{ note.favourite }}]
+          </h5>
+          <p class="card-text" [ngStyle]="{ 'font-size': note.favourite ? '16px' : '12px' }" [style.color]="note.color">
+            {{ note.body }}
+          </p>
+          <button type="button" class="btn btn-primary" href="" [class.active]="note === selectedNote" (click)="selectNote(note)">
+            {{ note.favourite ? 'Unfavorite' : 'Favorite' }}
+          </button>
         </div>
-        <div class="card-footer bg-transparent"[style.border-color]="note.color">
+        <div class="card-footer bg-transparent" [style.border-color]="note.color">
           Color:
           <input type="color" class="note-color" name="color" [(ngModel)]="note.color">
         </div>
       </div>
     </div>
-
-
-
   </div>
 </div>

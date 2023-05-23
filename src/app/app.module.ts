@@ -4,7 +4,6 @@ import { NotesService } from './notes.service';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { NOTES } from './mock.notes';
-import { ListnoteComponent } from './listnote/listnote.component';
 import { CreatenoteComponent } from './createnote/createnote.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotesComponent } from './notes/notes.component';
@@ -26,7 +25,6 @@ import { NoteSearchComponent } from './note-search/note-search.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ListnoteComponent,
     CreatenoteComponent,
     NotesComponent,
     NoteDetailsComponent,

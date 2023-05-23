@@ -1,56 +1,29 @@
-<!-- <div>
-  <h2>Create Note</h2>
-  <form (ngSubmit)="addNote()">
-    <div>
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" [(ngModel)]="newNote.title" required>
-    </div>
-    <div>
-      <label for="body">Body:</label>
-      <textarea id="body" name="body" [(ngModel)]="newNote.body"></textarea>
-    </div>
-    <div>
-      <label for="favorite">Favorite:</label>
-      <input type="checkbox" id="favorite" name="favorite" [(ngModel)]="newNote.favourite">
-    </div>
-    <div>
-      <label for="color">Color:</label>
-      <input type="color" id="color" name="color" [(ngModel)]="newNote.color">
-    </div>
-    <button type="submit">Save</button>
-  </form>
-</div> -->
-
-
 <div class="col-lg-12">
   <div>
-    <form (ngSubmit)="addNote()">
+    <form (ngSubmit)="addNote()" #form="ngForm">
       <div class="form-group">
         <label for="">Title:</label>
-        <!-- <input class="note-title form-control" name="title" [value]="selected?.title" required> -->
         <input class="note-title form-control" name="title" [(ngModel)]="newNote.title" required>
-        <div class="form-error">Field is required</div>
+        <div class="form-error" *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">Field is required</div>
       </div>
       <div class="form-group">
         <label for="">Note:</label>
-        <!-- <textarea class="note-body form-control" name="body" [value]="selected?.body"></textarea> -->
-        <textarea class="note-body form-control" name="body" [(ngModel)]="newNote.body"></textarea>
+        <textarea class="note-body form-control" name="body" [(ngModel)]="newNote.body" required></textarea>
       </div>
       <div class="form-group">
         <label for="">Favourite:</label>
-        <!-- <input type="checkbox" class="note-favourite" name="favourite" [value]="selected?.favourite"> -->
-        <input type="checkbox" class="note-favourite" name="favourite" [(ngModel)]="newNote.favourite" >
+        <input type="checkbox" class="note-favourite" name="favourite" [(ngModel)]="newNote.favourite">
       </div>
       <div class="form-group">
         <label for="">Color:</label>
-        <!-- <input type="color" class="note-color" name="color" [value]="selected?.color"> -->
         <input type="color" class="note-color" name="color" [(ngModel)]="newNote.color">
       </div>
       <div class="form-group">
         <button type="button" class="bts btn-secondary" (click)="goBack()">go back</button>
-        <button type="submit">Save</button>
-        <!-- <button type="button" class="btn btn-success">Save</button> -->
+        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Save</button>
       </div>
     </form>
   </div>
 </div>
+
+

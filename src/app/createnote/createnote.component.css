@@ -8,7 +8,7 @@ input {
   padding: .5rem;
 }
 button {
-  margin-top: 20px;
+  margin-top: 0px;
   margin-left: 10px;
   /* background-color: #f9c6c6; */
   padding: 1rem;
@@ -36,7 +36,7 @@ button {
   background-color: #dd1d1d;
 } */
 button:disabled {
-  background-color: #f9c6c6;
+  background-color: #ffffff;
   color: #ccc;
   cursor: auto;
 }

@@ -8,5 +8,11 @@ import { Note } from './note';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  {
+
+  notes: Note[] = [];
   title:"nOTE sERVICE"
+
+  saveNote(note) {
+    // TODO: save note
+  }
 }

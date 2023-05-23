@@ -11,3 +11,9 @@ export const NOTES = [
     { id: 258, title: 'Testing note 8', body: 'Testing Note Body 8', color: '#00ff00', favourite: true },
     { id: 369, title: 'Testing note 9', body: 'Testing Note Body 9', color: '#0000ff', favourite: false },
 ];
+
+export const mockNotes = [
+  { id: 123, title: 'Testing note 1', body: 'Testing Note Body 1', color: '#ff0000', favourite: false },
+  { id: 456, title: 'Testing note 2', body: 'Testing Note Body 2', color: '#00ff00', favourite: true },
+  { id: 789, title: 'Testing note 3', body: 'Testing Note Body 3', color: '#0000ff', favourite: false },
+];

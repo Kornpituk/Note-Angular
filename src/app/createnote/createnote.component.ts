@@ -27,6 +27,8 @@ export class CreatenoteComponent {
     id: 0
   };
 
+
+
   notes: Note[] = [];
 
   addNote(): void {

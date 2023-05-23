@@ -24,6 +24,7 @@ export class NotesComponent implements OnInit {
   notes: Note[] = [];
   selectedNote: Note | undefined;
 
+
   ngOnInit(): void {
     this.loadNotes();
   }
@@ -47,6 +48,12 @@ export class NotesComponent implements OnInit {
   delete(note: Note): void {
     this.notes = this.notes.filter(h => h !== note);
     this.notesService.deleteNote(note.id).subscribe();
+  }
+
+  selectNote(note: Note): void {
+    this.selectedNote = note;
+    this.messageService.add(`NotesComponent: Selected note id=${note.id}`);
+    note.favourite = !note.favourite; // Toggle the favorite state
   }
 
   // selectNote(note: Note):void  {
